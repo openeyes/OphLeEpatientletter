@@ -1,0 +1,48 @@
+This module is specific to Moorfields.
+
+It requires mssql support in PHP, and some adaptations to /etc/php5/cli/php.ini:
+
+[MSSQL]
+mssql.allow_persistent = On
+mssql.max_persistent = -1
+mssql.max_links = -1
+mssql.min_error_severity = 1
+mssql.min_message_severity = 1
+mssql.compatability_mode = Off
+;mssql.connect_timeout = -1
+mssql.timeout = -1
+;mssql.textlimit = 4096
+;mssql.textsize = 4096
+mssql.batchsize = 1000 
+;mssql.datetimeconvert = On
+mssql.secure_connection = On
+;mssql.max_procs = -1
+;mssql.charset = "ISO-8859-1"
+mssql.charset = "UTF-8"
+
+It requires ImportEpatientlettersCommand.php from Dropbox
+
+Migrations should be up to date, and this module's migrations should be run.
+
+After enabling this module running './yiic importepatientletters' will import all of the legacy letters from epatient creating the relevant data in the openeyes database.
+
+That will take a long time.
+
+This module also requires GNU Unrtf: http://www.gnu.org/software/unrtf/
+
+The ImportEpatientlettersCommand.php needs to have a valid path to where unrtf is installed.
+
+Unrtf converts the RTF format of the epatient letters into HTML which is stored in the database.
+
+Connections to epatient are brittle.  The command will keep running batches of 1000 records until it runs out or is killed.  If run again it will pick up where it left off since it starts with the first ID it doesn't already have.  So it should be safe to run any number of times.  Which is convenient given how long it takes.  
+
+Currently this module requires the feature/fife branch of the OpenEyes code, though this will shortly be merged back into development.  
+
+It makes a couple of core changes:
+
+- An episode can be associated with a specialty instead of a subspecialty.
+- An episode has a boolean indicating that it is 'legacy'.  This gets updated any time an event is created.
+- Any episode with the legacy boolean is not returned when you list episodes.
+- An episode with event types that are in event group legacy and those which are not will only show ones which are not.  IE: events of a type that are in event group legacy are hidden by default.
+- New code does the opposite to show a 'legacy events' box containing only legacy episodes and events of a type that are in event group legacy.
+
