@@ -9,6 +9,7 @@ class OphLeEpatientletterModule extends BaseEventTypeModule
 		// import the module-level models and components
 		$this->setImport(array(
 			'OphLeEpatientletter.models.*',
+			'OphLeEpatientletter.controllers.*',
 			'OphLeEpatientletter.components.*',
 		));
 	}

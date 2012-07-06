@@ -20,7 +20,24 @@ mssql.secure_connection = On
 ;mssql.charset = "ISO-8859-1"
 mssql.charset = "UTF-8"
 
+The mssql support in PHP uses freetds which is installed on our live servers already.  A change is required to /etc/freetds/freetds.conf:
+
+Change:
+timeout = -1
+connect timeout = -1
+
+Add to the bottom:
+[epatients2]
+host = epatients2
+port = 1433 
+tds version = 8.0   
+
 It requires ImportEpatientlettersCommand.php from Dropbox
+
+It requires the 'timelimit' command (apt-get install timelimit).  This is used to limit the execution time of unrtf
+
+You will need to add the following to your local/common.php import array:
+'application.modules.OphLeEpatientletter.models.*',
 
 Migrations should be up to date, and this module's migrations should be run.
 
@@ -28,7 +45,7 @@ After enabling this module running './yiic importepatientletters' will import al
 
 That will take a long time.
 
-This module also requires GNU Unrtf: http://www.gnu.org/software/unrtf/
+This module also requires GNU Unrtf: http://www.gnu.org/software/unrtf/   (apt-get install unrtf)
 
 The ImportEpatientlettersCommand.php needs to have a valid path to where unrtf is installed.
 

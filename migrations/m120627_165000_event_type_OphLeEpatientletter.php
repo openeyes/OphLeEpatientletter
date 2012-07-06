@@ -28,7 +28,7 @@ class m120627_165000_event_type_OphLeEpatientletter extends CDbMigration
 		$this->createTable('et_ophleepatientletter_epatientletter', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
 				'event_id' => 'int(10) unsigned NOT NULL',
-								'epatient_id' => 'varchar(255) DEFAULT \'\'', // 
+								'epatient_id' => 'int(10) NOT NULL', // 
 										'epatient_recipient_type' => 'varchar(255) DEFAULT \'\'', // 
 										'epatient_letter_date' => 'date DEFAULT NULL', // 
 										'epatient_created_by' => 'varchar(255) DEFAULT \'\'', // 
@@ -43,8 +43,11 @@ class m120627_165000_event_type_OphLeEpatientletter extends CDbMigration
 										'epatient_letter_set' => 'varchar(255) DEFAULT \'\'', // 
 										'epatient_person_id' => 'varchar(255) DEFAULT \'\'', // 
 										'epatient_hosnum' => 'varchar(255) DEFAULT \'\'', // 
-										'letter_html' => 'tinyint(1) unsigned NOT NULL DEFAULT 0', // 
-										'patient_id' => 'varchar(255) DEFAULT \'\'', // 
+										'importinfo' => 'varchar(255) DEFAULT \'\'', // 
+										'patient_id' => 'int(10) unsigned DEFAULT NULL',
+										'letter_html' => 'text DEFAULT NULL', // 
+										'recipient_html' => 'text DEFAULT NULL', // 
+										'date_html' => 'text DEFAULT NULL', // 
 										'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
 				'created_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
@@ -56,13 +59,17 @@ class m120627_165000_event_type_OphLeEpatientletter extends CDbMigration
 								'CONSTRAINT `et_ophleepatientletter_epatientletter_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophleepatientletter_epatientletter_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophleepatientletter_epatientletter_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
-							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+							), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin'
+		);
+		$this->createIndex('idx_et_ophleepatientletter_epatientletter_epatient_hosnum', 'et_ophleepatientletter_epatientletter', 'epatient_hosnum');
+		$this->execute("ALTER TABLE et_ophleepatientletter_epatientletter ADD UNIQUE (epatient_id)");
 
-						}
+	}
 
 	public function down() {
 		// --- drop any element related tables ---
 		// --- drop element tables ---
+				$this->dropIndex('idx_et_ophleepatientletter_epatientletter_epatient_hosnum', 'et_ophleepatientletter_epatientletter');
 				$this->dropTable('et_ophleepatientletter_epatientletter');
 
 		
