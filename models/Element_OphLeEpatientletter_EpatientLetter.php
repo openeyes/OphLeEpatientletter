@@ -119,7 +119,9 @@ class Element_OphLeEpatientletter_EpatientLetter extends BaseEventTypeElement
 'epatient_letter_set' => 'Epatient Letter Set',
 'epatient_person_id' => 'Epatient Person ID',
 'epatient_hosnum' => 'Epatient Hosnum',
-'letter_html' => 'Letter HTML',
+'letter_html' => 'Letter body',
+'recipient_html' => 'Recipient',
+'date_html' => 'Date sent',
 'patient_id' => 'Patient ID',
 		);
 	}

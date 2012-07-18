@@ -5,16 +5,32 @@
 	<tbody>
 								<tr>
 				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('recipient_html'))?>:</td>
-				<td><span class="big"> <?php  echo CHtml::decode($element->recipient_html)?></span></td>
+				<td><span class="big"> <?php  echo nl2br(CHtml::decode($element->recipient_html))?></span></td>
 			</tr>
 								<tr>
 				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('date_html'))?>:</td>
-				<td><span class="big"> <?php  echo CHtml::decode($element->date_html)?></span></td>
+				<td><span class="big"> <?php  echo nl2br(CHtml::decode($element->date_html))?></span></td>
 			</tr>
 								<tr>
 				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('letter_html'))?>:</td>
-				<td><span class="big"> <?php  echo CHtml::decode($element->letter_html)?></span></td>
+				<td><span class="big">
+					<?php 
+						$bold = false;
+						foreach (explode("\n",nl2br(CHtml::decode($element->letter_html))) as $line) {
+							if (preg_match("/RE:/i", $line)) {
+								echo "<b>".$line."\n";
+								$bold = true;
+							} else {
+								if ($bold == true) {
+									echo $line."</b>\n";
+								} else {
+									echo $line."\n";
+								}
+							}
+						};
+					?></span></td>
 			</tr>
+		<!--
 			<tr>
 				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_id'))?>:</td>
 				<td><span class="big"><?php  echo $element->epatient_id ?></span></td>
@@ -79,5 +95,6 @@
 				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('patient_id'))?>:</td>
 				<td><span class="big"><?php  echo $element->patient_id ?></span></td>
 			</tr>
+		-->
 						</tbody>
 </table>

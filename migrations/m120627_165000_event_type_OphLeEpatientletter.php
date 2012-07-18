@@ -6,12 +6,12 @@ class m120627_165000_event_type_OphLeEpatientletter extends CDbMigration
 		// --- EVENT TYPE ENTRIES ---
 
 		// create an event_type entry for this event type name if one doesn't already exist
-		if (!$this->dbConnection->createCommand()->select('id')->from('event_type')->where('name=:name', array(':name'=>'Epatientletter'))->queryRow()) {
+		if (!$this->dbConnection->createCommand()->select('id')->from('event_type')->where('name=:name', array(':name'=>'Epatient letter'))->queryRow()) {
 			$group = $this->dbConnection->createCommand()->select('id')->from('event_group')->where('name=:name',array(':name'=>'Legacy data'))->queryRow();
-			$this->insert('event_type', array('class_name' => 'OphLeEpatientletter', 'name' => 'Epatientletter','event_group_id' => $group['id']));
+			$this->insert('event_type', array('class_name' => 'OphLeEpatientletter', 'name' => 'Epatient letter','event_group_id' => $group['id']));
 		}
 		// select the event_type id for this event type name
-		$event_type = $this->dbConnection->createCommand()->select('id')->from('event_type')->where('name=:name', array(':name'=>'Epatientletter'))->queryRow();
+		$event_type = $this->dbConnection->createCommand()->select('id')->from('event_type')->where('name=:name', array(':name'=>'Epatient letter'))->queryRow();
 
 		// --- ELEMENT TYPE ENTRIES ---
 
@@ -76,7 +76,7 @@ class m120627_165000_event_type_OphLeEpatientletter extends CDbMigration
 		
 		
 		// --- delete event entries ---
-		$event_type = $this->dbConnection->createCommand()->select('id')->from('event_type')->where('name=:name', array(':name'=>'Epatientletter'))->queryRow();
+		$event_type = $this->dbConnection->createCommand()->select('id')->from('event_type')->where('name=:name', array(':name'=>'Epatient letter'))->queryRow();
 
 		foreach ($this->dbConnection->createCommand()->select('id')->from('event')->where('event_type_id=:event_type_id', array(':event_type_id'=>$event_type['id']))->queryAll() as $row) {
 			$this->delete('audit', 'event_id='.$row['id']);
