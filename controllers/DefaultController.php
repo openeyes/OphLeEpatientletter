@@ -20,7 +20,7 @@
 class DefaultController extends BaseEventTypeController {
 
 	public function renderEventMetadata() {
-		$this->renderPartial('//patient/event_metadata', array('hide_modified' => true));
+		// Suppress event metadata
 	}
 	
 }
