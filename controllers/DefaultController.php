@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * OpenEyes
  *
@@ -17,10 +17,11 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
 
-class DefaultController extends BaseEventTypeController {
-
-	public function renderEventMetadata() {
+class DefaultController extends BaseEventTypeController
+{
+	public function renderEventMetadata()
+	{
 		// Suppress event metadata
 	}
-	
+
 }

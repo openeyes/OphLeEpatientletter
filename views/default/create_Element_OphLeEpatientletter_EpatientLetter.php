@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * OpenEyes
  *
@@ -22,27 +22,27 @@
 
 			<?php echo $form->textField($element, 'epatient_id', array('size' => '10')); ?>
 			<?php echo $form->textField($element, 'epatient_recipient_type', array('size' => '10')); ?>
-	
+
 		<?php echo $form->datePicker($element, 'epatient_letter_date', array('maxDate' => 'today'), array('style'=>'width: 110px;')); ?>
 			<?php echo $form->textField($element, 'epatient_created_by', array('size' => '10')); ?>
-	
+
 		<?php echo $form->textArea($element, 'epatient_recipient_data', array('rows' => 6, 'cols' => 80)); ?>
-	
+
 		<?php echo $form->textArea($element, 'epatient_contact_data', array('rows' => 6, 'cols' => 80)); ?>
-	
+
 		<?php echo $form->textArea($element, 'epatient_date_data', array('rows' => 6, 'cols' => 80)); ?>
-	
+
 		<?php echo $form->textArea($element, 'epatient_letter_body', array('rows' => 6, 'cols' => 80)); ?>
-	
+
 		<?php echo $form->radioBoolean($element, 'epatient_printed'); ?>
 			<?php echo $form->textField($element, 'epatient_patient_episode_id', array('size' => '10')); ?>
 			<?php echo $form->textField($element, 'epatient_location_id', array('size' => '10')); ?>
-	
+
 		<?php echo $form->radioBoolean($element, 'epatient_cc_gp'); ?>
 			<?php echo $form->textField($element, 'epatient_letter_set', array('size' => '10')); ?>
 			<?php echo $form->textField($element, 'epatient_person_id', array('size' => '10')); ?>
 			<?php echo $form->textField($element, 'epatient_hosnum', array('size' => '10')); ?>
-	
+
 		<?php echo $form->radioBoolean($element, 'letter_html'); ?>
 			<?php echo $form->textField($element, 'patient_id', array('size' => '10')); ?>
 	</div>

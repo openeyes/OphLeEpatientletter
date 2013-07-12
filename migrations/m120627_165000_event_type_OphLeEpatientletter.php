@@ -1,8 +1,8 @@
-<?php 
+<?php
 class m120627_165000_event_type_OphLeEpatientletter extends CDbMigration
 {
-	public function up() {
-
+	public function up()
+	{
 		// --- EVENT TYPE ENTRIES ---
 
 		// create an event_type entry for this event type name if one doesn't already exist
@@ -21,33 +21,33 @@ class m120627_165000_event_type_OphLeEpatientletter extends CDbMigration
 		}
 		// select the element_type_id for this element type name
 		$element_type = $this->dbConnection->createCommand()->select('id')->from('element_type')->where('event_type_id=:eventTypeId and name=:name', array(':eventTypeId'=>$event_type['id'],':name'=>'Epatient letter'))->queryRow();
-				
-		
-				
+
+
+
 		// create the table for this element type: et_modulename_elementtypename
 		$this->createTable('et_ophleepatientletter_epatientletter', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
 				'event_id' => 'int(10) unsigned NOT NULL',
-								'epatient_id' => 'int(10) NOT NULL', // 
-										'epatient_recipient_type' => 'varchar(255) DEFAULT \'\'', // 
-										'epatient_letter_date' => 'date DEFAULT NULL', // 
-										'epatient_created_by' => 'varchar(255) DEFAULT \'\'', // 
-										'epatient_recipient_data' => 'text DEFAULT \'\'', // 
-										'epatient_contact_data' => 'text DEFAULT \'\'', // 
-										'epatient_date_data' => 'text DEFAULT \'\'', // 
-										'epatient_letter_body' => 'text DEFAULT \'\'', // 
-										'epatient_printed' => 'tinyint(1) unsigned NOT NULL DEFAULT 0', // 
-										'epatient_patient_episode_id' => 'varchar(255) DEFAULT \'\'', // 
-										'epatient_location_id' => 'varchar(255) DEFAULT \'\'', // 
-										'epatient_cc_gp' => 'tinyint(1) unsigned NOT NULL DEFAULT 0', // 
-										'epatient_letter_set' => 'varchar(255) DEFAULT \'\'', // 
-										'epatient_person_id' => 'varchar(255) DEFAULT \'\'', // 
-										'epatient_hosnum' => 'varchar(255) DEFAULT \'\'', // 
-										'importinfo' => 'varchar(255) DEFAULT \'\'', // 
+								'epatient_id' => 'int(10) NOT NULL', //
+										'epatient_recipient_type' => 'varchar(255) DEFAULT \'\'', //
+										'epatient_letter_date' => 'date DEFAULT NULL', //
+										'epatient_created_by' => 'varchar(255) DEFAULT \'\'', //
+										'epatient_recipient_data' => 'text DEFAULT \'\'', //
+										'epatient_contact_data' => 'text DEFAULT \'\'', //
+										'epatient_date_data' => 'text DEFAULT \'\'', //
+										'epatient_letter_body' => 'text DEFAULT \'\'', //
+										'epatient_printed' => 'tinyint(1) unsigned NOT NULL DEFAULT 0', //
+										'epatient_patient_episode_id' => 'varchar(255) DEFAULT \'\'', //
+										'epatient_location_id' => 'varchar(255) DEFAULT \'\'', //
+										'epatient_cc_gp' => 'tinyint(1) unsigned NOT NULL DEFAULT 0', //
+										'epatient_letter_set' => 'varchar(255) DEFAULT \'\'', //
+										'epatient_person_id' => 'varchar(255) DEFAULT \'\'', //
+										'epatient_hosnum' => 'varchar(255) DEFAULT \'\'', //
+										'importinfo' => 'varchar(255) DEFAULT \'\'', //
 										'patient_id' => 'int(10) unsigned DEFAULT NULL',
-										'letter_html' => 'text DEFAULT NULL', // 
-										'recipient_html' => 'text DEFAULT NULL', // 
-										'date_html' => 'text DEFAULT NULL', // 
+										'letter_html' => 'text DEFAULT NULL', //
+										'recipient_html' => 'text DEFAULT NULL', //
+										'date_html' => 'text DEFAULT NULL', //
 										'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
 				'created_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
@@ -66,15 +66,16 @@ class m120627_165000_event_type_OphLeEpatientletter extends CDbMigration
 
 	}
 
-	public function down() {
+	public function down()
+	{
 		// --- drop any element related tables ---
 		// --- drop element tables ---
 				$this->dropIndex('idx_et_ophleepatientletter_epatientletter_epatient_hosnum', 'et_ophleepatientletter_epatientletter');
 				$this->dropTable('et_ophleepatientletter_epatientletter');
 
-		
-		
-		
+
+
+
 		// --- delete event entries ---
 		$event_type = $this->dbConnection->createCommand()->select('id')->from('event_type')->where('name=:name', array(':name'=>'Epatient letter'))->queryRow();
 
