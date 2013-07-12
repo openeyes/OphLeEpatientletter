@@ -189,4 +189,3 @@ $criteria->compare('patient_id', $this->patient_id);
 		return parent::beforeValidate();
 	}
 }
-?>

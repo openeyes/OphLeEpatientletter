@@ -96,4 +96,3 @@ class m120627_165000_event_type_OphLeEpatientletter extends CDbMigration
 		return true;
 	}
 }
-?>
