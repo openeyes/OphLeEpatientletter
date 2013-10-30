@@ -1,5 +1,5 @@
 <?php
-class m120627_165000_event_type_OphLeEpatientletter extends CDbMigration
+class m130913_000014_event_type_OphLeEpatientletter extends CDbMigration
 {
 	public function up()
 	{
