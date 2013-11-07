@@ -1,0 +1,20 @@
+{
+  "name": "openeyes-OphLeEpatientletter",
+  "version": "1.4.0",
+  "description": "OpenEyes ePatient Letter event module.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/openeyes/OphLeEpatientletter.git"
+  },
+  "author": "OpenEyes",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/openeyes/OphLeEpatientletter/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-compass": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.2",
+    "load-grunt-tasks": "~0.1.0"
+  }
+}

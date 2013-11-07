@@ -16,103 +16,106 @@
  * @copyright Copyright (c) 2011-2013, OpenEyes Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
- ?>
-<h4 class="elementTypeName"><?php  echo $element->elementType->name ?></h4>
-
-<table class="subtleWhite normalText">
+?>
+<table class="plain">
 	<tbody>
-								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('recipient_html'))?>:</td>
-				<td><span class="big"> <?php  echo nl2br(CHtml::decode($element->recipient_html))?></span></td>
-			</tr>
-								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('date_html'))?>:</td>
-				<td><span class="big"> <?php  echo nl2br(CHtml::decode($element->date_html))?></span></td>
-			</tr>
-								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('letter_html'))?>:</td>
-				<td><span class="big">
+		<tr>
+			<td width="30%" valign="top"><?php  echo CHtml::encode($element->getAttributeLabel('recipient_html'))?>:</td>
+			<td><big><?php  echo nl2br(CHtml::decode($element->recipient_html))?></big></td>
+		</tr>
+		<tr>
+			<td valign="top"><?php  echo CHtml::encode($element->getAttributeLabel('date_html'))?>:</td>
+			<td><big><?php  echo nl2br(CHtml::decode($element->date_html))?></big></td>
+		</tr>
+		<tr>
+			<td valign="top">
+					<?php echo CHtml::encode($element->getAttributeLabel('letter_html'))?>:
+			</td>
+			<td>
+				<big>
 					<?php
-						$bold = false;
-						foreach (explode("\n",nl2br(CHtml::decode($element->letter_html))) as $line) {
-							if (preg_match("/RE:/i", $line)) {
-								echo "<b>".$line."\n";
-								$bold = true;
+					$bold = false;
+					foreach (explode("\n",nl2br(CHtml::decode($element->letter_html))) as $line) {
+						if (preg_match("/RE:/i", $line)) {
+							echo "<b>".$line."\n";
+							$bold = true;
+						} else {
+							if ($bold == true) {
+								echo $line."</b>\n";
 							} else {
-								if ($bold == true) {
-									echo $line."</b>\n";
-								} else {
-									echo $line."\n";
-								}
+								echo $line."\n";
 							}
-						};
-					?></span></td>
-			</tr>
+						}
+					};
+					?>
+				</big>
+			</td>
+		</tr>
 		<?php /*
 			<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_id'))?>:</td>
-				<td><span class="big"><?php  echo $element->epatient_id ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_id'))?>:</td>
+				<td><?php  echo $element->epatient_id ?></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_recipient_type'))?>:</td>
-				<td><span class="big"><?php  echo $element->epatient_recipient_type ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_recipient_type'))?>:</td>
+				<td><?php  echo $element->epatient_recipient_type ?></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_letter_date'))?>:</td>
-				<td><span class="big"><?php  echo CHtml::encode($element->NHSDate('epatient_letter_date')); ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_letter_date'))?>:</td>
+				<td><?php  echo CHtml::encode($element->NHSDate('epatient_letter_date')); ?></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_created_by'))?>:</td>
-				<td><span class="big"><?php  echo $element->epatient_created_by ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_created_by'))?>:</td>
+				<td><?php  echo $element->epatient_created_by ?></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_recipient_data'))?>:</td>
-				<td><span class="big"><?php  echo $element->epatient_recipient_data ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_recipient_data'))?>:</td>
+				<td><?php  echo $element->epatient_recipient_data ?></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_contact_data'))?>:</td>
-				<td><span class="big"><?php  echo $element->epatient_contact_data ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_contact_data'))?>:</td>
+				<td><?php  echo $element->epatient_contact_data ?></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_date_data'))?>:</td>
-				<td><span class="big"><?php  echo $element->epatient_date_data ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_date_data'))?>:</td>
+				<td><?php  echo $element->epatient_date_data ?></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_letter_body'))?>:</td>
-				<td><span class="big"><?php  echo $element->epatient_letter_body ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_letter_body'))?>:</td>
+				<td><?php  echo $element->epatient_letter_body ?></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_printed'))?>:</td>
-				<td><span class="big"> <?php  echo $element->epatient_printed ? 'Yes' : 'No' ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_printed'))?>:</td>
+				<td><?php  echo $element->epatient_printed ? 'Yes' : 'No' ?></span></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_patient_episode_id'))?>:</td>
-				<td><span class="big"><?php  echo $element->epatient_patient_episode_id ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_patient_episode_id'))?>:</td>
+				<td><?php  echo $element->epatient_patient_episode_id ?></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_location_id'))?>:</td>
-				<td><span class="big"><?php  echo $element->epatient_location_id ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_location_id'))?>:</td>
+				<td><?php  echo $element->epatient_location_id ?></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_cc_gp'))?>:</td>
-				<td><span class="big"> <?php  echo $element->epatient_cc_gp ? 'Yes' : 'No' ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_cc_gp'))?>:</td>
+				<td><?php  echo $element->epatient_cc_gp ? 'Yes' : 'No' ?></span></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_letter_set'))?>:</td>
-				<td><span class="big"><?php  echo $element->epatient_letter_set ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_letter_set'))?>:</td>
+				<td><?php  echo $element->epatient_letter_set ?></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_person_id'))?>:</td>
-				<td><span class="big"><?php  echo $element->epatient_person_id ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_person_id'))?>:</td>
+				<td><?php  echo $element->epatient_person_id ?></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('epatient_hosnum'))?>:</td>
-				<td><span class="big"><?php  echo $element->epatient_hosnum ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('epatient_hosnum'))?>:</td>
+				<td><?php  echo $element->epatient_hosnum ?></td>
 			</tr>
 								<tr>
-				<td width="30%"><?php  echo CHtml::encode($element->getAttributeLabel('patient_id'))?>:</td>
-				<td><span class="big"><?php  echo $element->patient_id ?></span></td>
+				<td><?php  echo CHtml::encode($element->getAttributeLabel('patient_id'))?>:</td>
+				<td><?php  echo $element->patient_id ?></td>
 			</tr>
 		*/ ?>
-						</tbody>
+	</tbody>
 </table>

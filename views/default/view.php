@@ -17,14 +17,9 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
  ?>
-<?php 	$this->breadcrumbs=array($this->module->id);
-	$this->header();
-?>
-<h3 class="withEventIcon" style="background:transparent url(<?php echo $this->assetPath?>/img/medium.png) center left no-repeat;"><?php  echo $this->event_type->name ?></h3>
-
-<div>
-	<?php  $this->renderDefaultElements($this->action->id); ?>	<?php  $this->renderOptionalElements($this->action->id); ?>
-	<div class="cleartall"></div>
-</div>
-
-<?php  $this->footer();?>
+<?php $this->beginContent('//patient/event_container');?>
+	<?php $this->event_actions = array();?>
+	<h2 class="event-title"><?php echo $this->event_type->name?></h2>
+	<?php $this->renderDefaultElements($this->action->id); ?>
+	<?php $this->renderOptionalElements($this->action->id); ?>
+<?php $this->endContent() ;?>
