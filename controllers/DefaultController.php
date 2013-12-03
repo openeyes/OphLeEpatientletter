@@ -21,7 +21,7 @@ class DefaultController extends BaseEventTypeController
 {
 	public $editable = false;
 
-	public function renderEventMetadata()
+	public function renderEventMetadata($view='')
 	{
 		// Suppress event metadata
 	}
