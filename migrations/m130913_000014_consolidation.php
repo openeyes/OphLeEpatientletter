@@ -7,7 +7,8 @@ class m130913_000014_consolidation extends OEMigration
 	{
 		if (!$this->consolidate(
 			array(
-				'm120627_165000_event_type_OphLeEpatientletter'
+				'm120627_165000_event_type_OphLeEpatientletter',
+				'm120918_094344_drop_unnecessary_fields',
 			)
 		)
 		) {
@@ -92,44 +93,14 @@ class m130913_000014_consolidation extends OEMigration
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
 				'event_id' => 'int(10) unsigned NOT NULL',
 				'epatient_id' => 'int(10) NOT NULL',
-				//
-				'epatient_recipient_type' => 'varchar(255) DEFAULT \'\'',
-				//
-				'epatient_letter_date' => 'date DEFAULT NULL',
-				//
-				'epatient_created_by' => 'varchar(255) DEFAULT \'\'',
-				//
-				'epatient_recipient_data' => 'text DEFAULT \'\'',
-				//
-				'epatient_contact_data' => 'text DEFAULT \'\'',
-				//
-				'epatient_date_data' => 'text DEFAULT \'\'',
-				//
-				'epatient_letter_body' => 'text DEFAULT \'\'',
-				//
 				'epatient_printed' => 'tinyint(1) unsigned NOT NULL DEFAULT 0',
-				//
-				'epatient_patient_episode_id' => 'varchar(255) DEFAULT \'\'',
-				//
-				'epatient_location_id' => 'varchar(255) DEFAULT \'\'',
-				//
 				'epatient_cc_gp' => 'tinyint(1) unsigned NOT NULL DEFAULT 0',
-				//
-				'epatient_letter_set' => 'varchar(255) DEFAULT \'\'',
-				//
-				'epatient_person_id' => 'varchar(255) DEFAULT \'\'',
-				//
 				'epatient_hosnum' => 'varchar(255) DEFAULT \'\'',
-				//
 				'importinfo' => 'varchar(255) DEFAULT \'\'',
-				//
 				'patient_id' => 'int(10) unsigned DEFAULT NULL',
 				'letter_html' => 'text DEFAULT NULL',
-				//
 				'recipient_html' => 'text DEFAULT NULL',
-				//
 				'date_html' => 'text DEFAULT NULL',
-				//
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
 				'created_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
@@ -150,7 +121,5 @@ class m130913_000014_consolidation extends OEMigration
 			'epatient_hosnum'
 		);
 		$this->execute("ALTER TABLE et_ophleepatientletter_epatientletter ADD UNIQUE (epatient_id)");
-
 	}
-
 }

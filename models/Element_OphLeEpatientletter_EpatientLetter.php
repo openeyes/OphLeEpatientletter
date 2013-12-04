@@ -24,19 +24,8 @@
  * @property string $id
  * @property integer $event_id
  * @property string $epatient_id
- * @property string $epatient_recipient_type
- * @property string $epatient_letter_date
- * @property string $epatient_created_by
- * @property string $epatient_recipient_data
- * @property string $epatient_contact_data
- * @property string $epatient_date_data
- * @property string $epatient_letter_body
  * @property string $epatient_printed
- * @property string $epatient_patient_episode_id
- * @property string $epatient_location_id
  * @property string $epatient_cc_gp
- * @property string $epatient_letter_set
- * @property string $epatient_person_id
  * @property string $epatient_hosnum
  * @property string $letter_html
  * @property string $patient_id
@@ -73,11 +62,11 @@ class Element_OphLeEpatientletter_EpatientLetter extends BaseEventTypeElement
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, epatient_id, epatient_recipient_type, epatient_letter_date, epatient_created_by, epatient_recipient_data, epatient_contact_data, epatient_date_data, epatient_letter_body, epatient_printed, epatient_patient_episode_id, epatient_location_id, epatient_cc_gp, epatient_letter_set, epatient_person_id, epatient_hosnum, letter_html, patient_id, ', 'safe'),
+			array('event_id, epatient_id, epatient_printed, epatient_cc_gp, epatient_hosnum, letter_html, patient_id', 'safe'),
 			# array('epatient_id, epatient_recipient_type, epatient_letter_date, epatient_created_by, epatient_recipient_data, epatient_contact_data, epatient_date_data, epatient_letter_body, epatient_printed, epatient_patient_episode_id, epatient_location_id, epatient_cc_gp, epatient_letter_set, epatient_person_id, epatient_hosnum, letter_html, patient_id, ', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, epatient_id, epatient_recipient_type, epatient_letter_date, epatient_created_by, epatient_recipient_data, epatient_contact_data, epatient_date_data, epatient_letter_body, epatient_printed, epatient_patient_episode_id, epatient_location_id, epatient_cc_gp, epatient_letter_set, epatient_person_id, epatient_hosnum, letter_html, patient_id, ', 'safe', 'on' => 'search'),
+			array('id, event_id, epatient_id, epatient_printed, epatient_cc_gp, epatient_hosnum, letter_html, patient_id', 'safe', 'on' => 'search'),
 		);
 	}
 
@@ -94,7 +83,7 @@ class Element_OphLeEpatientletter_EpatientLetter extends BaseEventTypeElement
 			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
-					);
+		);
 	}
 
 	/**
@@ -105,25 +94,14 @@ class Element_OphLeEpatientletter_EpatientLetter extends BaseEventTypeElement
 		return array(
 			'id' => 'ID',
 			'event_id' => 'Event',
-'epatient_id' => 'Epatient ID',
-'epatient_recipient_type' => 'Epatient Recipient Type',
-'epatient_letter_date' => 'Epatient Letter date',
-'epatient_created_by' => 'Epatient Created By',
-'epatient_recipient_data' => 'Epatient Recipient Data',
-'epatient_contact_data' => 'Epatient Contact Data',
-'epatient_date_data' => 'Epatient Date Data',
-'epatient_letter_body' => 'Epatient Letter Body',
-'epatient_printed' => 'Epatient Printed',
-'epatient_patient_episode_id' => 'Epatient Patient Episode ID',
-'epatient_location_id' => 'Epatient Location ID',
-'epatient_cc_gp' => 'Epatient CC GP',
-'epatient_letter_set' => 'Epatient Letter Set',
-'epatient_person_id' => 'Epatient Person ID',
-'epatient_hosnum' => 'Epatient Hosnum',
-'letter_html' => 'Letter body',
-'recipient_html' => 'Recipient',
-'date_html' => 'Date sent',
-'patient_id' => 'Patient ID',
+			'epatient_id' => 'Epatient ID',
+			'epatient_printed' => 'Epatient Printed',
+			'epatient_cc_gp' => 'Epatient CC GP',
+			'epatient_hosnum' => 'Epatient Hosnum',
+			'letter_html' => 'Letter body',
+			'recipient_html' => 'Recipient',
+			'date_html' => 'Date sent',
+			'patient_id' => 'Patient ID',
 		);
 	}
 
@@ -133,59 +111,19 @@ class Element_OphLeEpatientletter_EpatientLetter extends BaseEventTypeElement
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id, true);
 		$criteria->compare('event_id', $this->event_id, true);
-
-$criteria->compare('epatient_id', $this->epatient_id);
-$criteria->compare('epatient_recipient_type', $this->epatient_recipient_type);
-$criteria->compare('epatient_letter_date', $this->epatient_letter_date);
-$criteria->compare('epatient_created_by', $this->epatient_created_by);
-$criteria->compare('epatient_recipient_data', $this->epatient_recipient_data);
-$criteria->compare('epatient_contact_data', $this->epatient_contact_data);
-$criteria->compare('epatient_date_data', $this->epatient_date_data);
-$criteria->compare('epatient_letter_body', $this->epatient_letter_body);
-$criteria->compare('epatient_printed', $this->epatient_printed);
-$criteria->compare('epatient_patient_episode_id', $this->epatient_patient_episode_id);
-$criteria->compare('epatient_location_id', $this->epatient_location_id);
-$criteria->compare('epatient_cc_gp', $this->epatient_cc_gp);
-$criteria->compare('epatient_letter_set', $this->epatient_letter_set);
-$criteria->compare('epatient_person_id', $this->epatient_person_id);
-$criteria->compare('epatient_hosnum', $this->epatient_hosnum);
-$criteria->compare('letter_html', $this->letter_html);
-$criteria->compare('patient_id', $this->patient_id);
+		$criteria->compare('epatient_id', $this->epatient_id);
+		$criteria->compare('epatient_printed', $this->epatient_printed);
+		$criteria->compare('epatient_cc_gp', $this->epatient_cc_gp);
+		$criteria->compare('epatient_hosnum', $this->epatient_hosnum);
+		$criteria->compare('letter_html', $this->letter_html);
+		$criteria->compare('patient_id', $this->patient_id);
 
 		return new CActiveDataProvider(get_class($this), array(
-				'criteria' => $criteria,
-			));
-	}
-
-	/**
-	 * Set default values for forms on create
-	 */
-	public function setDefaultOptions()
-	{
-	}
-
-
-
-	protected function beforeSave()
-	{
-		return parent::beforeSave();
-	}
-
-	protected function afterSave()
-	{
-
-		return parent::afterSave();
-	}
-
-	protected function beforeValidate()
-	{
-		return parent::beforeValidate();
+			'criteria' => $criteria,
+		));
 	}
 }
