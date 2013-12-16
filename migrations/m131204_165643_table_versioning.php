@@ -52,7 +52,6 @@ CREATE TABLE `et_ophleepatientletter_epatientletter_version` (
 	public function down()
 	{
 		$this->dropColumn('et_ophleepatientletter_epatientletter','deleted');
-		$this->dropColumn('et_ophleepatientletter_epatientletter_version','deleted');
 
 		$this->dropTable('et_ophleepatientletter_epatientletter_version');
 	}
