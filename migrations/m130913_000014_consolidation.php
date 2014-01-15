@@ -113,7 +113,7 @@ class m130913_000014_consolidation extends OEMigration
 				'CONSTRAINT `et_ophleepatientletter_epatientletter_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophleepatientletter_epatientletter_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
 			),
-			'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin'
+			'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci'
 		);
 		$this->createIndex(
 			'idx_et_ophleepatientletter_epatientletter_epatient_hosnum',
