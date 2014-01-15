@@ -11,12 +11,12 @@ CREATE TABLE `et_ophleepatientletter_epatientletter_version` (
 	`epatient_id` int(10) NOT NULL,
 	`epatient_printed` tinyint(1) unsigned NOT NULL DEFAULT '0',
 	`epatient_cc_gp` tinyint(1) unsigned NOT NULL DEFAULT '0',
-	`epatient_hosnum` varchar(255) COLLATE utf8_bin DEFAULT '',
-	`importinfo` varchar(255) COLLATE utf8_bin DEFAULT '',
+	`epatient_hosnum` varchar(255) DEFAULT '',
+	`importinfo` varchar(255) DEFAULT '',
 	`patient_id` int(10) unsigned DEFAULT NULL,
-	`letter_html` text COLLATE utf8_bin,
-	`recipient_html` text COLLATE utf8_bin,
-	`date_html` text COLLATE utf8_bin,
+	`letter_html` text,
+	`recipient_html` text,
+	`date_html` text,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -30,7 +30,7 @@ CREATE TABLE `et_ophleepatientletter_epatientletter_version` (
 	CONSTRAINT `acv_et_ophleepatientletter_epatientletter_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophleepatientletter_epatientletter_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophleepatientletter_epatientletter_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophleepatientletter_epatientletter_version','id','int(10) unsigned NOT NULL');
