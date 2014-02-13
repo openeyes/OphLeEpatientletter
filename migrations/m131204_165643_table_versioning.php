@@ -37,22 +37,16 @@ CREATE TABLE `et_ophleepatientletter_epatientletter_version` (
 		$this->dropPrimaryKey('id','et_ophleepatientletter_epatientletter_version');
 
 		$this->createIndex('et_ophleepatientletter_epatientletter_aid_fk','et_ophleepatientletter_epatientletter_version','id');
-		$this->addForeignKey('et_ophleepatientletter_epatientletter_aid_fk','et_ophleepatientletter_epatientletter_version','id','et_ophleepatientletter_epatientletter','id');
 
 		$this->addColumn('et_ophleepatientletter_epatientletter_version','version_date',"datetime not null default '1900-01-01 00:00:00'");
 
 		$this->addColumn('et_ophleepatientletter_epatientletter_version','version_id','int(10) unsigned NOT NULL');
 		$this->addPrimaryKey('version_id','et_ophleepatientletter_epatientletter_version','version_id');
 		$this->alterColumn('et_ophleepatientletter_epatientletter_version','version_id','int(10) unsigned NOT NULL AUTO_INCREMENT');
-
-		$this->addColumn('et_ophleepatientletter_epatientletter','deleted','tinyint(1) unsigned not null');
-		$this->addColumn('et_ophleepatientletter_epatientletter_version','deleted','tinyint(1) unsigned not null');
 	}
 
 	public function down()
 	{
-		$this->dropColumn('et_ophleepatientletter_epatientletter','deleted');
-
 		$this->dropTable('et_ophleepatientletter_epatientletter_version');
 	}
 }
