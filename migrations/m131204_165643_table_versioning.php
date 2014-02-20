@@ -22,7 +22,6 @@ CREATE TABLE `et_ophleepatientletter_epatientletter_version` (
 	`created_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`created_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `epatient_id` (`epatient_id`),
 	KEY `acv_et_ophleepatientletter_epatientletter_lmui_fk` (`last_modified_user_id`),
 	KEY `acv_et_ophleepatientletter_epatientletter_cui_fk` (`created_user_id`),
 	KEY `acv_et_ophleepatientletter_epatientletter_ev_fk` (`event_id`),
