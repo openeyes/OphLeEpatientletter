@@ -19,5 +19,5 @@
  ?>
 <?php $this->beginContent('//patient/event_container');?>
 	<?php $this->event_actions = array();?>
-	<?php $this->renderDefaultElements($this->action->id); ?>
+	<?php $this->renderOpenElements($this->action->id); ?>
 <?php $this->endContent() ;?>
