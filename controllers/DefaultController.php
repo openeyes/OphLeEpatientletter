@@ -19,7 +19,21 @@
 
 class DefaultController extends BaseEventTypeController
 {
-	public $editable = false;
+
+	public function checkEditAccess()
+	{
+		return false;
+	}
+
+	public function checkDeleteAccess()
+	{
+		return false;
+	}
+
+	public function checkRequestDeleteAccess()
+	{
+		return false;
+	}
 
 	public function renderEventMetadata($view='')
 	{
