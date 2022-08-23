@@ -17,7 +17,7 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
 ?>
-<table class="plain">
+<table class="label-value last-left">
 	<tbody>
 		<tr>
 			<td width="30%" valign="top"><?php  echo CHtml::encode($element->getAttributeLabel('recipient_html'))?>:</td>
