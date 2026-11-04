@@ -21,6 +21,6 @@ class OphLeEpatientletter_API extends BaseAPI
 {
 	public function patientHasLegacyLetters($hos_num)
 	{
-		return (boolean) Element_OphLeEpatientletter_EpatientLetter::model()->find('epatient_hosnum=?',array($hos_num));
+		return (bool) Element_OphLeEpatientletter_EpatientLetter::model()->find('epatient_hosnum=?',array($hos_num));
 	}
 }
